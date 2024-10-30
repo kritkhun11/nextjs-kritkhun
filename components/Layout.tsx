@@ -24,9 +24,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link href="/group/ServerGroupList" passHref>
               <p style={styles.link}>กลุ่มเซิฟเวอร์</p>
             </Link>
-            <p onClick={logout} style={{ ...styles.link, cursor: 'pointer' }}>
-              ออกจากระบบ
-            </p>
+            {router.pathname !== '/' && (
+              <p onClick={logout} style={{ ...styles.link, cursor: 'pointer' }}>
+                ออกจากระบบ
+              </p>
+            )}
           </div>
         </div>
       </nav>
