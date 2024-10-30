@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (req.method) {
     case 'GET':
       try {
-        const [rows] = await pool.query('SELECT * FROM server_vm WHERE server_group_id = ?', [id]);
+        const [rows] = await pool.query('SELECT server_vm.*, server_group.server_group_name FROM server_vm LEFT JOIN server_group ON server_vm.server_group_id = server_group.id WHERE server_vm.server_group_id = ?' , [id])as any[];
         if (rows.length > 0) {
           return res.status(200).json(rows); 
         }

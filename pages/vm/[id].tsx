@@ -20,6 +20,7 @@ const vm = () => {
     storage: '',
     additional_info: '',
     server_group_id: id,
+    server_group_name :'',
   });
 
   useEffect(() => {
@@ -142,6 +143,7 @@ const vm = () => {
       storage: '',
       additional_info: '',
       server_group_id: id,
+      server_group_name :'',
     });
     setIsEdit(false);
     setEditVmId(null);
@@ -260,7 +262,8 @@ const vm = () => {
                   <th>แรม</th>
                   <th>ความจำ</th>
                   <th>รายละเอียดเพิ่มเติม</th>
-                  <th>เซิฟเวอร์กรุ๊ป</th>
+                  <th>ไอดีเซิฟเวอร์กรุ๊ป</th>
+                  <th>ชื่อเซิฟเวอร์กรุ๊ป</th>
                   <th>จัดการ</th>
                 </tr>
               </thead>
@@ -276,7 +279,8 @@ const vm = () => {
                   <th>แรม</th>
                   <th>ความจำ</th>
                   <th>รายละเอียดเพิ่มเติม</th>
-                  <th>เซิฟเวอร์กรุ๊ป</th>
+                  <th>ไอดีเซิฟเวอร์กรุ๊ป</th>
+                  <th>ชื่อเซิฟเวอร์กรุ๊ป</th>
                   <th>จัดการ</th>
                 </tr>
               </thead>
@@ -291,6 +295,7 @@ const vm = () => {
                     <td>{vm.storage}</td>
                     <td>{vm.additional_info}</td>
                     <td>{vm.server_group_id}</td>
+                    <td>{vm.server_group_name}</td>
                     <td>
                       <Button variant="warning" onClick={() => handleEdit(vm)}>แก้ไข</Button>{' '}
                       <Button variant="danger" onClick={() => deleteVM(vm.id)}>ลบ</Button>
