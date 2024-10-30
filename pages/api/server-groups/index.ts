@@ -1,9 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
-import path from 'path';
+
 import pool from '../../../connect/db';
 
-
+export const config = {
+    api: {
+      bodyParser: {
+        sizeLimit: '5mb',
+      },
+    },
+  };
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { ip_address, server_group_name, cpu, ram, storage, additional_info, image_url } = req.body;

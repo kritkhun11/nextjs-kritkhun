@@ -19,7 +19,7 @@ export default function Register() {
     if (res.ok) {
       Swal.fire({
         title: 'สำเร็จ!',
-        text: 'สร้าง server group ใหม่เรียบร้อยแล้ว',
+        text: 'ลงทะเบียนเสร็จสิ้น',
         icon: 'success',
         confirmButtonText: 'ตกลง'
       }).then(() => {
@@ -29,7 +29,7 @@ export default function Register() {
       const errorData = await res.json();
       Swal.fire({
         title: 'เกิดข้อผิดพลาด',
-        text: errorData.message || 'ไม่สามารถสร้าง server group ได้',
+        text: errorData.message || 'ไม่สำเร็จ',
         icon: 'error',
         confirmButtonText: 'ลองใหม่'
       }).then(() => {

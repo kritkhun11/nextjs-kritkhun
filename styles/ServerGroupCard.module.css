@@ -3,48 +3,48 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 24px;
   padding: 24px;
-  background-color: #f0f4f8; /* พื้นหลังสีอ่อน */
+  background-color: #f0f4f8;
 }
 
 .serverGroupCard {
-  border: none; /* เอาเส้นขอบออก */
+  border: none;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* เงาที่นุ่มนวลขึ้น */
-  background-color: #ffffff; /* พื้นหลังสีขาว */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); 
+  background-color: #ffffff;
   max-width: 100%;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* เพิ่มเอฟเฟ็กต์การเคลื่อนไหว */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
 }
 
 .serverGroupCard:hover {
-  transform: translateY(-5px); /* ขยับขึ้นเล็กน้อยเมื่อ hover */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อ hover */
+  transform: translateY(-5px); 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 .serverGroupCard h2 {
   font-size: 22px;
   margin-bottom: 12px;
-  color: #007bff; /* สีฟ้า */
+  color: #007bff;
 }
 
 .serverGroupCard img {
   max-width: 100%;
   height: auto;
-  border-radius: 50%; /* รูปภาพเป็นวงกลม */
+  border-radius: 50%; 
   margin-bottom: 16px;
-  border: 3px solid #007bff; /* กรอบรูปสีฟ้า */
+  border: 3px solid #007bff; 
 }
 
 .serverGroupCard p {
   margin: 8px 0;
-  color: #555; /* สีข้อความที่อ่อนลง */
+  color: #555; 
 }
 
 .serverGroupCard button {
   margin: 8px 6px;
-  font-weight: bold; /* ทำให้ตัวอักษรหนา */
-  transition: background-color 0.2s ease; /* เพิ่มเอฟเฟ็กต์การเคลื่อนไหวของปุ่ม */
+  font-weight: bold; 
+  transition: background-color 0.2s ease;
 }
 
 .serverGroupCard .btn-info {
@@ -53,7 +53,7 @@
 }
 
 .serverGroupCard .btn-info:hover {
-  background-color: #138496; /* สีเข้มขึ้นเมื่อ hover */
+  background-color: #138496;
   border-color: #138496;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .serverGroupCard .btn-warning:hover {
-  background-color: #e0a800; /* สีเข้มขึ้นเมื่อ hover */
+  background-color: #e0a800; 
   border-color: #e0a800;
 }
 
@@ -73,6 +73,6 @@
 }
 
 .serverGroupCard .btn-danger:hover {
-  background-color: #c82333; /* สีเข้มขึ้นเมื่อ hover */
+  background-color: #c82333; 
   border-color: #c82333;
 }

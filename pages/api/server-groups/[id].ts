@@ -6,6 +6,7 @@ import pool from '../../../connect/db';
 export const config = {
   api: {
     bodyParser: true, 
+    sizeLimit: '5mb',
   },
 };
 
@@ -18,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (rows.length === 0) return res.status(404).json({ message: 'Server group not found' });
       res.status(200).json(rows[0]);
     } catch (error) {
-      res.status(500).json({ message: 'Error fetching server group', error });
+      res.status(500).json({ message: 'เช็คเฟท server group', error });
     }
   } else if (req.method === 'PUT') {
     const { server_group_name, cpu, ram, storage, additional_info, image_base64 } = req.body;
