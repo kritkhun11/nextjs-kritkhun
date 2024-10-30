@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(401).json({ message: 'กรุณากรอก ชื่อผู้ใช้และรหัสผ่านให้ถูกต้อง' });
       }
       //ทดสอบโทเคนไว้ใช้บล็อค หน้า url วันที่ 29/10/2024
-      const token = jwt.sign({ userId: user.id }, SECRET_KEY, { expiresIn: '1h' });
+      const token = jwt.sign( { userId: user.id, status: user.status }, SECRET_KEY, { expiresIn: '1h' });
 
       return res.status(200).json({ message: 'Login successful', token });
     } catch (error) {

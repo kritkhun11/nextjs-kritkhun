@@ -4,6 +4,8 @@ import { Modal, Button, Form, Image } from 'react-bootstrap';
 import styles from '../../styles/ServerGroupCard.module.css';
 import Swal from 'sweetalert2';
 import useAuth from '../้hooks/useAuth';
+
+import { jwtDecode } from "jwt-decode";
 interface ServerGroup {
     id: number;
     ip_address: string;
@@ -16,14 +18,24 @@ interface ServerGroup {
 }
 
 
+interface UserPayload {
+    userId: number;
+    status: number;
+}
 const ServerGroupList: React.FC = () => {
     useAuth();
     const [serverGroups, setServerGroups] = useState<ServerGroup[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingGroup, setEditingGroup] = useState<Partial<ServerGroup> | null>(null);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            const decoded = jwtDecode<UserPayload>(token);
+            setIsAdmin(decoded.status === 1);
+        }
         fetchServerGroups();
     }, []);
 
@@ -39,6 +51,15 @@ const ServerGroupList: React.FC = () => {
     };
 
     const handleDelete = async (id: number) => {
+        if (!isAdmin) {
+            Swal.fire({
+                title: 'คุณไม่ใช่ผู้ดูแลระบบ',
+                text: 'ไม่สามารถดำเนินการได้',
+                icon: 'error',
+                confirmButtonText: 'ตกลง'
+            });
+            return;
+        }
         const result = await Swal.fire({
             title: 'คุณแน่ใจหรือไม่?',
             text: 'คุณต้องการลบ?',
@@ -138,6 +159,15 @@ const ServerGroupList: React.FC = () => {
     };
 
     const handleEdit = async (id: number) => {
+        if (!isAdmin) {
+            Swal.fire({
+                title: 'คุณไม่ใช่ผู้ดูแลระบบ',
+                text: 'ไม่สามารถดำเนินการได้',
+                icon: 'error',
+                confirmButtonText: 'ตกลง'
+            });
+            return;
+        }
         try {
             const response = await fetch(`/api/server-groups/${id}`);
             if (response.ok) {
