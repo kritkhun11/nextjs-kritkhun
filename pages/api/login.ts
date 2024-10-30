@@ -12,14 +12,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const [rows] = await pool.query('SELECT * FROM user WHERE username = ?', [username])as any[];
       if (rows.length === 0) {
-        return res.status(401).json({ message: 'กรุณากรอก ชื่อผู้ใช้และรหัสผ่านให้ถูกต้อง' });
+        return res.status(401).json({ message: 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน' });
       }
 
       const user = rows[0];
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (!passwordMatch) {
-        return res.status(401).json({ message: 'กรุณากรอก ชื่อผู้ใช้และรหัสผ่านให้ถูกต้อง' });
+        return res.status(401).json({ message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
       }
       //ทดสอบโทเคนไว้ใช้บล็อค หน้า url วันที่ 29/10/2024
       const token = jwt.sign( { userId: user.id, status: user.status }, SECRET_KEY, { expiresIn: '1h' });
